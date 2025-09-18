@@ -12,6 +12,29 @@
         padding: 0;
         color: #222;
     }
+    .top-bar {
+        width: 90%;
+        margin: 32px auto 0 auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .create-btn {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(67,233,123,0.08);
+        transition: background 0.2s;
+    }
+    .create-btn:hover {
+        background: #219150;
+    }
     h1 {
         text-align: center;
         margin: 40px 0 32px 0;
@@ -83,6 +106,9 @@
 </style>
 </head>
 <body>
+    <div class="top-bar">
+        <a href="<?= site_url('user/create'); ?>" class="create-btn">+ Create User</a>
+    </div>
     <h1>Welcome to View Page</h1>
     <table>
         <tr>
