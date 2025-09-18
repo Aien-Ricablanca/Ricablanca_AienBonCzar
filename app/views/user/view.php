@@ -118,7 +118,17 @@
             <th>Action</th>
         </tr>
 
-        <?php foreach (html_escape($users) as $user): ?>
+        <?php
+            // Pagination logic
+            $limit = 7;
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $total_users = count($users);
+            $total_pages = ceil($total_users / $limit);
+            $start = ($page - 1) * $limit;
+            $users_paginated = array_slice($users, $start, $limit);
+        ?>
+
+        <?php foreach (html_escape($users_paginated) as $user): ?>
             <tr>
                 <td><?= $user['id']; ?></td>
                 <td><?= $user['username']; ?></td>
@@ -130,5 +140,14 @@
             </tr>
         <?php endforeach; ?>
     </table>
+    <div style="width:90%;margin:24px auto 0 auto;text-align:center;">
+        <?php if ($total_pages > 1): ?>
+            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                <a href="?page=<?= $i; ?>" style="padding:8px 16px;margin:0 4px;border-radius:6px;<?= $i == $page ? 'background:#43e97b;color:#fff;' : 'background:#f2fbf6;color:#219150;' ?>">
+                    <?= $i; ?>
+                </a>
+            <?php endfor; ?>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
