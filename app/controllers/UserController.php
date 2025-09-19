@@ -39,7 +39,7 @@ class UserController extends Controller {
         $this->pagination->set_theme('custom'); // or 'tailwind', or 'custom'
         $this->pagination->initialize($total_rows, $records_per_page, $page, site_url('users').'?q='.$q);
         $data['page'] = $this->pagination->paginate();
-        $this->call->view('users', $data);  
+        $this->call->view('user/view', $data);  
     }
     public function create()
     {
