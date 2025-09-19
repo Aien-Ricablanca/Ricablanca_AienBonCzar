@@ -10,6 +10,7 @@ class UserController extends Controller {
     public function __construct()
     {
         parent::__construct();
+         $this->pagination = $this->load->library('pagination');
     }
 
     public function index()
