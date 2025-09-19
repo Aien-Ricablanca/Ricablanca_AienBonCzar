@@ -17,7 +17,7 @@ class UserModel extends Model {
 
 public function page($q, $records_per_page = null, $page = null) {
             if (is_null($page)) {
-                return $this->db->table('users')->index();
+                return $this->db->table('users')->get_all();
             } else {
                 $query = $this->db->table('users');
                 
@@ -33,7 +33,7 @@ public function page($q, $records_per_page = null, $page = null) {
                                                 ->get()['count'];
 
                 $data['records'] = $query->pagination($records_per_page, $page)
-                                        ->index();
+                                        ->get_all();
 
                 return $data;
             }
